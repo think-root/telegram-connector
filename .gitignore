@@ -1,2 +1,4 @@
 .env
 .env.prod
+tmp
+.air.toml
