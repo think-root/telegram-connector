@@ -1,0 +1,149 @@
+package cron
+
+import (
+	"bytes"
+	"chappie_bot/config"
+	"chappie_bot/helpers"
+	"chappie_bot/repository"
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"strings"
+	"time"
+
+	"github.com/go-co-op/gocron"
+	"github.com/go-telegram/bot"
+	"github.com/go-telegram/bot/models"
+)
+
+type generateRequest struct {
+	MaxRepos           int    `json:"max_repos"`
+	Since              string `json:"since"`
+	SpokenLanguageCode string `json:"spoken_language_code"`
+}
+
+type generateResponse struct {
+	Status    string   `json:"status"`
+	Added     []string `json:"added"`
+	DontAdded []string `json:"dont_added"`
+}
+
+func SendMessageCron(ctx context.Context, b *bot.Bot) {
+	s := gocron.NewScheduler(time.UTC)
+	s.Every(1).Day().At("10:12:00").SingletonMode().Do(func() {
+		repo, err := repository.GetRepository(1, false)
+		if err != nil {
+			log.Printf("Error getting repository: %v", err)
+			return
+		}
+
+		if len(repo.Data.Items) == 0 {
+			return
+		}
+
+		item := repo.Data.Items[0]
+		username_repo := strings.TrimPrefix(item.URL, "https://github.com/")
+		message := fmt.Sprintf("<a href=\"%s\">🔗 %s</a> %s", item.URL, username_repo, item.Text)
+
+		err = repository.Socialify(username_repo)
+		if err != nil {
+			log.Println(err)
+			err := helpers.CopyFile("./assets/github_octopus_logo.png", "./tmp/gh_project_img/image.png")
+			if err != nil {
+				log.Printf("Failed to copy file: %v", err)
+				return
+			}
+		}
+
+		fileData, errReadFile := os.ReadFile("./tmp/gh_project_img/image.png")
+		if errReadFile != nil {
+			log.Printf("error reading file: %v\n", errReadFile)
+			return
+		}
+
+		params := &bot.SendPhotoParams{
+			ChatID:    config.CHANNEL_ID,
+			Photo:     &models.InputFileUpload{Filename: "github.png", Data: bytes.NewReader(fileData)},
+			Caption:   message,
+			ParseMode: models.ParseModeHTML,
+		}
+
+		if _, err := b.SendPhoto(ctx, params); err != nil {
+			log.Printf("Error sending message: %v", err)
+			return
+		}
+
+		err = helpers.RemoveAllFilesInFolder("./tmp/gh_project_img")
+		if err != nil {
+			log.Println(err)
+		}
+
+		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
+			log.Printf("Error updating repository posted status: %v", err)
+		} else if result {
+			log.Println("Message successfully sent to channel")
+		}
+	})
+	s.StartAsync()
+}
+
+func CollectPostsCron(ctx context.Context, b *bot.Bot) {
+	s := gocron.NewScheduler(time.UTC)
+
+	s.Every(1).Day().At("16:46:00").SingletonMode().Do(func() {
+		log.Println("Collecting posts...")
+
+		payload := generateRequest{
+			MaxRepos:           5,
+			Since:              "daily",
+			SpokenLanguageCode: "en",
+		}
+
+		jsonData, err := json.Marshal(payload)
+		if err != nil {
+			log.Printf("Error marshaling request: %v", err)
+			return
+		}
+
+		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/auto-generate/", bytes.NewBuffer(jsonData))
+		if err != nil {
+			log.Printf("Error creating request: %v", err)
+			return
+		}
+
+		req.Header.Set("Accept", "*/*")
+		req.Header.Set("Connection", "keep-alive")
+		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+
+		client := &http.Client{}
+		resp, err := client.Do(req)
+		if err != nil {
+			log.Printf("Error sending request: %v", err)
+			return
+		}
+		defer resp.Body.Close()
+
+		body, err := io.ReadAll(resp.Body)
+		if err != nil {
+			log.Printf("Error reading response: %v", err)
+			return
+		}
+
+		var response generateResponse
+		if err := json.Unmarshal(body, &response); err != nil {
+			log.Printf("Error unmarshaling response: %v", err)
+			return
+		}
+
+		if response.Status == "ok" {
+			log.Printf("Successfully collected %d new repositories", len(response.Added))
+		}
+	})
+
+	s.StartAsync()
+}
