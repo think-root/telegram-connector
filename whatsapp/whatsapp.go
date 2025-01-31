@@ -30,7 +30,7 @@ func SendMessageToWhatsApp(text string, jid string) bool {
 		return false
 	}
 
-	req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"wapp/send-message", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", config.WAPP_SERVER_URL+"wapp/send-message", bytes.NewBuffer(jsonData))
 	if err != nil {
 		return false
 	}
