@@ -73,8 +73,8 @@ jobs:
             cd "$REPO_FOLDER"
 
             echo "Setting up .env file..."
-            echo "${{ secrets.ENV_PROD }}" | base64 --decode > .env
-
+            echo "${{ secrets.ENV_PROD }}" > .env
+            
             # Зупинка та видалення існуючого контейнера
             if docker inspect chappie_bot >/dev/null 2>&1; then
               echo "Stopping and removing existing container..."
