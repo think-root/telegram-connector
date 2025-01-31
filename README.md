@@ -44,11 +44,10 @@ CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/>
 CHAPPIE_SERVER_BEARER=<chappie_server server token>
 WAPP_JID=<whatsapp chat jid https://github.com/Think-Root/wapp>
 WAPP_TOKEN=<whatsapp app token https://github.com/Think-Root/wapp>
+WAPP_SERVER_URL<server url for https://github.com/Think-Root/wapp>
 ```
 
-
-> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, REMOVE THE SendMessageToWhatsApp FUNCTION CALL FROM THE CODE AND DO NOT SET UP THE WAPP_JID AND WAPP_TOKEN VARIABLES
-
+> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, REMOVE THE SendMessageToWhatsApp FUNCTION CALL FROM THE CODE AND DO NOT SET UP THE WAPP_JID, WAPP_TOKEN AND WAPP_SERVER_URL VARIABLES
 
 ### Deploy (If deploy before deploying the chappie_server)
 
