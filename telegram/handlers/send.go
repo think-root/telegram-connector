@@ -5,6 +5,7 @@ import (
 	"chappie_bot/config"
 	"chappie_bot/helpers"
 	"chappie_bot/repository"
+	"chappie_bot/whatsapp"
 	"context"
 	"fmt"
 	"log"
@@ -48,9 +49,10 @@ func SendPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 		}
 
 		params := &bot.SendPhotoParams{
-			ChatID:    config.CHANNEL_ID,
-			Photo:     &models.InputFileUpload{Filename: "github.png", Data: bytes.NewReader(fileData)},
-			Caption:   message,
+			ChatID: config.CHANNEL_ID,
+			Photo:  &models.InputFileUpload{Filename: "github.png", Data: bytes.NewReader(fileData)},
+			Caption: message +
+				"\n\n<b><a href=\"https://t.me/github_ukraine\">🤖 GitHub Repositories</a></b>",
 			ParseMode: models.ParseModeHTML,
 		}
 
@@ -62,6 +64,13 @@ func SendPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 		err = helpers.RemoveAllFilesInFolder("./tmp/gh_project_img")
 		if err != nil {
 			log.Println(err)
+		}
+
+		wapp := whatsapp.SendMessageToWhatsApp(message, config.WAPP_JID)
+		if wapp {
+			log.Println("Message successfully sent to whatsapp")
+		} else {
+			log.Println("Message not sent to whatsapp")
 		}
 
 		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
