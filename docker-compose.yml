@@ -1,0 +1,18 @@
+services:
+  chappie_bot:
+    container_name: chappie_bot
+    restart: always
+    image: chappie_bot:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      TZ: Europe/Kiev
+    networks:
+      - chappie_network
+
+networks:
+  chappie_network:
+    external: true 
