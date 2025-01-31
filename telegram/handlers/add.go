@@ -24,7 +24,7 @@ func ManualAddPostHandler(ctx context.Context, b *bot.Bot, update *models.Update
 		if repoURLs == "" {
 			b.SendMessage(ctx, &bot.SendMessageParams{
 				ChatID: userID,
-				Text:   "Будь ласка, надайте хоча б одну URL-адресу репозиторію GitHub"})
+				Text:   "Please provide at least one GitHub repository URL"})
 			return
 		}
 
@@ -79,10 +79,10 @@ func ManualAddPostHandler(ctx context.Context, b *bot.Bot, update *models.Update
 		if response.Status == "ok" {
 			var message strings.Builder
 			if len(response.Added) > 0 {
-				message.WriteString("✅ Додано:\n" + strings.Join(response.Added, "\n") + "\n\n")
+				message.WriteString("✅ Added:\n" + strings.Join(response.Added, "\n") + "\n\n")
 			}
 			if len(response.DontAdded) > 0 {
-				message.WriteString("❌ Не додано:\n" + strings.Join(response.DontAdded, "\n"))
+				message.WriteString("❌ Not Added:\n" + strings.Join(response.DontAdded, "\n"))
 			}
 			if message.Len() > 0 {
 				isDisabled := true

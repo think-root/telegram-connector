@@ -11,11 +11,10 @@ func DefaultHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	commands := []models.BotCommand{
 		{
 			Command:     "start",
-			Description: "Як finish тільки навпаки 🤷‍♀️",
-		},
+			Description: "Like finish but the opposite 🤷‍♀️",		},
 		{
 			Command:     "help",
-			Description: "Потрібна допомога? 🤔",
+			Description: "Need help? 🤔",
 		},
 	}
 

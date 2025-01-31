@@ -78,8 +78,7 @@ func SendPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 		} else if result {
 			b.SendMessage(ctx, &bot.SendMessageParams{
 				ChatID: config.ADMIN_ID,
-				Text:   "Повідомлення успішно відправлене",
-			})
+				Text:   "Message successfully sent"})
 		}
 	}
 }
