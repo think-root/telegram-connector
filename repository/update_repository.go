@@ -21,7 +21,7 @@ func UpdateRepositoryPosted(url string, posted bool) (bool, error) {
 		"posted": %t
 	}`, url, posted))
 
-	req, err := http.NewRequest("POST", apiURL, payload)
+	req, err := http.NewRequest("PATCH", apiURL, payload)
 	if err != nil {
 		return false, fmt.Errorf("error creating request: %v", err)
 	}
