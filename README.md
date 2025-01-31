@@ -46,9 +46,9 @@ WAPP_JID=<whatsapp chat jid https://github.com/Think-Root/wapp>
 WAPP_TOKEN=<whatsapp app token https://github.com/Think-Root/wapp>
 ```
 
-``` text
-🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, REMOVE THE SendMessageToWhatsApp FUNCTION CALL FROM THE CODE AND DO NOT SET UP THE WAPP_JID AND WAPP_TOKEN VARIABLES
-```
+
+> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, REMOVE THE SendMessageToWhatsApp FUNCTION CALL FROM THE CODE AND DO NOT SET UP THE WAPP_JID AND WAPP_TOKEN VARIABLES
+
 
 ### Deploy (If deploy before deploying the chappie_server)
 
