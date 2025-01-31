@@ -94,11 +94,11 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 func CollectPostsCron(ctx context.Context, b *bot.Bot) {
 	s := gocron.NewScheduler(time.UTC)
 
-	s.Every(1).Day().At("16:46:00").SingletonMode().Do(func() {
+	s.Every(1).Day().At("13:00:00").SingletonMode().Do(func() {
 		log.Println("Collecting posts...")
 
 		payload := generateRequest{
-			MaxRepos:           5,
+			MaxRepos:           1,
 			Since:              "daily",
 			SpokenLanguageCode: "en",
 		}
