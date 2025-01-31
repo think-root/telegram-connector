@@ -18,7 +18,7 @@ func DBStatisticHandler(ctx context.Context, b *bot.Bot, update *models.Update) 
 	userID := update.Message.From.ID
 	if userID == config.ADMIN_ID {
 		requestBody := `{"limit": 1, "posted": false}`
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
+		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
 		if err != nil {
 			log.Panicln(err)
 			return

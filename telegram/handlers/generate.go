@@ -53,7 +53,7 @@ func GeneratePostsHandler(ctx context.Context, b *bot.Bot, update *models.Update
 			return
 		}
 
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/auto-generate/", bytes.NewBuffer(jsonData))
+		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/auto-generate/", bytes.NewBuffer(jsonData))
 		if err != nil {
 			log.Printf("Error creating request: %v", err)
 			return

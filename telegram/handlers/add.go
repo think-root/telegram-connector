@@ -40,7 +40,7 @@ func ManualAddPostHandler(ctx context.Context, b *bot.Bot, update *models.Update
 			return
 		}
 
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/manual-generate/", bytes.NewBuffer(jsonBody))
+		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/manual-generate/", bytes.NewBuffer(jsonBody))
 		if err != nil {
 			log.Println(err)
 			return

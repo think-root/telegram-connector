@@ -14,7 +14,7 @@ type updateResponse struct {
 }
 
 func UpdateRepositoryPosted(url string, posted bool) (bool, error) {
-	apiURL := config.CHAPPIE_SERVER_URL + "/api/update-posted/"
+	apiURL := config.CHAPPIE_SERVER_URL + "think-root/api/update-posted/"
 
 	payload := strings.NewReader(fmt.Sprintf(`{
 		"url": "%s",

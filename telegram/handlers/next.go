@@ -51,7 +51,7 @@ func NextPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	}
 
 	requestBody := fmt.Sprintf(`{"limit": %d, "posted": false}`, limit)
-	req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
+	req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
 	if err != nil {
 		log.Panicln(err)
 		return

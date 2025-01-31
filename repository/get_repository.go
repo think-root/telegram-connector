@@ -28,7 +28,7 @@ type repositoryResponse struct {
 }
 
 func GetRepository(limit int, posted bool) (*repositoryResponse, error) {
-	url := config.CHAPPIE_SERVER_URL + "/api/get-repository/"
+	url := config.CHAPPIE_SERVER_URL + "think-root/api/get-repository/"
 
 	payload := strings.NewReader(fmt.Sprintf(`{
 		"limit": %d,
