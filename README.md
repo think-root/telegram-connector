@@ -40,8 +40,10 @@ create a **.env** file in the app root directory
 BOT_TOKEN=<bot token https://core.telegram.org/bots>
 ADMIN_ID=<your telegram id>
 CHANNEL_ID=<your channel id>
-CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/think-root>
+CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/>
 CHAPPIE_SERVER_BEARER=<chappie_server server token>
+WAPP_JID=<whatsapp chat jid https://github.com/Think-Root/wapp>
+WAPP_TOKEN=<whatsapp app token https://github.com/Think-Root/wapp>
 ```
 
 ### Deploy (If deploy before deploying the chappie_server)
