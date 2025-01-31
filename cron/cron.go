@@ -5,6 +5,7 @@ import (
 	"chappie_bot/config"
 	"chappie_bot/helpers"
 	"chappie_bot/repository"
+	"chappie_bot/whatsapp"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -82,6 +83,13 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 			log.Println(err)
 		}
 
+		wapp := whatsapp.SendMessageToWhatsApp(message, config.WAPP_JID)
+		if wapp {
+			log.Println("Message successfully sent to whatsapp")
+		}else{
+			log.Println("Message not sent to whatsapp")
+		}
+
 		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
 			log.Printf("Error updating repository posted status: %v", err)
 		} else if result {
@@ -109,7 +117,7 @@ func CollectPostsCron(ctx context.Context, b *bot.Bot) {
 			return
 		}
 
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"/api/auto-generate/", bytes.NewBuffer(jsonData))
+		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/auto-generate/", bytes.NewBuffer(jsonData))
 		if err != nil {
 			log.Printf("Error creating request: %v", err)
 			return
