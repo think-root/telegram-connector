@@ -14,4 +14,5 @@ var (
 	CHAPPIE_SERVER_BEARER = Env(("CHAPPIE_SERVER_BEARER"))
 	WAPP_TOKEN            = Env("WAPP_TOKEN")
 	WAPP_JID              = Env("WAPP_JID")
+	WAPP_SERVER_URL       = Env("WAPP_SERVER_URL")
 )
