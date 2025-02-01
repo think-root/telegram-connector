@@ -48,7 +48,8 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 
 		item := repo.Data.Items[0]
 		username_repo := strings.TrimPrefix(item.URL, "https://github.com/")
-		message := fmt.Sprintf("<a href=\"%s\">🔗 %s</a> %s", item.URL, username_repo, item.Text)
+		telegramMessage := fmt.Sprintf("<a href=\"%s\">🔗 %s</a> %s\n\n<b><a href=\"https://t.me/github_ukraine\">🤖 GitHub Repositories</a></b>", item.URL, username_repo, item.Text)
+		whatsappMessage := fmt.Sprintf("🔗 %s\n\n%s\n\n🤖 GitHub Repositories", item.URL, item.Text)
 
 		err = repository.Socialify(username_repo)
 		if err != nil {
@@ -67,10 +68,9 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 		}
 
 		params := &bot.SendPhotoParams{
-			ChatID: config.CHANNEL_ID,
-			Photo:  &models.InputFileUpload{Filename: "github.png", Data: bytes.NewReader(fileData)},
-			Caption: message +
-				"\n\n<b><a href=\"https://t.me/github_ukraine\">🤖 GitHub Repositories</a></b>",
+			ChatID:    config.CHANNEL_ID,
+			Photo:     &models.InputFileUpload{Filename: "github.png", Data: bytes.NewReader(fileData)},
+			Caption:   telegramMessage,
 			ParseMode: models.ParseModeHTML,
 		}
 
@@ -84,7 +84,7 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 			log.Println(err)
 		}
 
-		wapp := whatsapp.SendMessageToWhatsApp(message, config.WAPP_JID)
+		wapp := whatsapp.SendMessageToWhatsApp(whatsappMessage, config.WAPP_JID)
 		if wapp {
 			log.Println("Message successfully sent to whatsapp")
 		} else {
