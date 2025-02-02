@@ -7,8 +7,7 @@
   - [Clone repo](#clone-repo)
   - [Config](#config)
   - [OPTIONAL VARIABLES](#optional-variables)
-  - [Deploy (If deploy before deploying the chappie\_server)](#deploy-if-deploy-before-deploying-the-chappie_server)
-  - [Deploy (If deploy after deploying the chappie\_server)](#deploy-if-deploy-after-deploying-the-chappie_server)
+  - [Deploy](#deploy)
 - [Telegram bot commands](#telegram-bot-commands)
 - [Contribution](#contribution)
   - [run](#run)
@@ -58,16 +57,9 @@ WAPP_SERVER_URL<server url for>
 
 > 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DON'T SET THIS VARIABLES IN THE ENV FILE
 
-### Deploy (If deploy before deploying the chappie_server)
+### Deploy
 
-- create network `docker network create chappie_network` (to allow the app access to the database run mariadb in this network)
-- run [mariadb](https://hub.docker.com/_/mariadb) `docker run -d --name mariadb --network chappie_network -e MYSQL_ROOT_PASSWORD=your_password -p 3306:3306 mariadb:latest`
-- build `docker build -t chappie_bot:latest -f Dockerfile .`
-- run `docker run --name chappie_bot --restart always --env-file .env -e TZ=Europe/Kiev --network chappie_network chappie_bot:latest`
-- or via docker compose `docker compose up -d`
-
-### Deploy (If deploy after deploying the chappie_server)
-
+- deploy [this](https://github.com/Think-Root/chappie_server?tab=readme-ov-file#deploy) app
 - build `docker build -t chappie_bot:latest -f Dockerfile .`
 - run `docker run --name chappie_bot --restart always --env-file .env -e TZ=Europe/Kiev --network chappie_network chappie_bot:latest`
 - or via docker compose `docker compose up -d`
