@@ -6,6 +6,7 @@
   - [Requirements](#requirements)
   - [Clone repo](#clone-repo)
   - [Config](#config)
+  - [OPTIONAL VARIABLES](#optional-variables)
   - [Deploy (If deploy before deploying the chappie\_server)](#deploy-if-deploy-before-deploying-the-chappie_server)
   - [Deploy (If deploy after deploying the chappie\_server)](#deploy-if-deploy-after-deploying-the-chappie_server)
 - [Telegram bot commands](#telegram-bot-commands)
@@ -34,7 +35,7 @@ git clone https://github.com/Think-Root/chappie_bot.git
 
 ### Config
 
-create a **.env** file in the app root directory
+Create a **.env** file in the app root directory
 
 ```properties
 BOT_TOKEN=<bot token https://core.telegram.org/bots>
@@ -42,12 +43,20 @@ ADMIN_ID=<your telegram id>
 CHANNEL_ID=<your channel id>
 CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/>
 CHAPPIE_SERVER_BEARER=<chappie_server server token>
-WAPP_JID=<whatsapp chat jid https://github.com/Think-Root/wapp>
-WAPP_TOKEN=<whatsapp app token https://github.com/Think-Root/wapp>
-WAPP_SERVER_URL<server url for https://github.com/Think-Root/wapp>
 ```
 
-> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, REMOVE THE SendMessageToWhatsApp FUNCTION CALL FROM THE CODE AND DO NOT SET UP THE WAPP_JID, WAPP_TOKEN AND WAPP_SERVER_URL VARIABLES
+### OPTIONAL VARIABLES
+
+Watch this [repository](https://github.com/Think-Root/wapp)
+
+```properties
+WAPP_ENABLE=<true/false to enable/disable WhatsApp functionality, default is false>
+WAPP_JID=<whatsapp chat jid>
+WAPP_TOKEN=<whatsapp app token>
+WAPP_SERVER_URL<server url for>
+```
+
+> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DON'T SET THIS VARIABLES IN THE ENV FILE
 
 ### Deploy (If deploy before deploying the chappie_server)
 
