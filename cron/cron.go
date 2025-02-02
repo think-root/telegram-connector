@@ -49,7 +49,6 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 		item := repo.Data.Items[0]
 		username_repo := strings.TrimPrefix(item.URL, "https://github.com/")
 		telegramMessage := fmt.Sprintf("<a href=\"%s\">🔗 %s</a> %s\n\n<b><a href=\"https://t.me/github_ukraine\">🤖 GitHub Repositories</a></b>", item.URL, username_repo, item.Text)
-		whatsappMessage := fmt.Sprintf("🔗 %s\n\n%s\n\n🤖 GitHub Repositories", item.URL, item.Text)
 
 		err = repository.Socialify(username_repo)
 		if err != nil {
@@ -84,11 +83,14 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 			log.Println(err)
 		}
 
-		wapp := whatsapp.SendMessageToWhatsApp(whatsappMessage, config.WAPP_JID)
-		if wapp {
-			log.Println("Message successfully sent to whatsapp")
-		} else {
-			log.Println("Message not sent to whatsapp")
+		if config.WAPP_ENABLE	{
+			whatsappMessage := fmt.Sprintf("🔗 %s\n\n%s\n\n🤖 GitHub Repositories", item.URL, item.Text)
+			wapp := whatsapp.SendMessageToWhatsApp(whatsappMessage, config.WAPP_JID)
+			if wapp {
+				log.Println("Message successfully sent to whatsapp")
+			} else {
+				log.Println("Message not sent to whatsapp")
+			}
 		}
 
 		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
