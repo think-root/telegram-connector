@@ -49,13 +49,14 @@ CHAPPIE_SERVER_BEARER=<chappie_server server token>
 Watch this [repository](https://github.com/Think-Root/wapp)
 
 ```properties
+ENABLE_CRON=<true/false to enable CollectPostsCron, default is false>
 WAPP_ENABLE=<true/false to enable/disable WhatsApp functionality, default is false>
 WAPP_JID=<whatsapp chat jid>
 WAPP_TOKEN=<whatsapp app token>
 WAPP_SERVER_URL<server url for>
 ```
 
-> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DON'T SET THIS VARIABLES IN THE ENV FILE
+> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DON'T SET WAPP_ VARIABLES IN THE ENV FILE
 
 ### Deploy
 
