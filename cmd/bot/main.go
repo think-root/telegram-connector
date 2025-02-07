@@ -34,7 +34,11 @@ func main() {
 	handlers.RegisterCommands(b)
 
 	cron.SendMessageCron(ctx, b)
-	cron.CollectPostsCron(ctx, b)
+
+	if config.ENABLE_CRON {
+		log.Println("Starting CollectPostsCron...")
+		cron.CollectPostsCron(ctx, b)
+	}
 
 	log.Printf("Bot successfully started ^_^ (app version: %s)\n\n", config.APP_VERSION)
 
