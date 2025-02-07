@@ -24,4 +24,13 @@ var (
 		}
 		return false
 	}()
+	ENABLE_CRON = func() bool {
+		if val := Env("ENABLE_CRON"); val != "" {
+			parsed, err := strconv.ParseBool(val)
+			if err == nil {
+				return parsed
+			}
+		}
+		return false
+	}()
 )
