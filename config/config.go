@@ -4,7 +4,7 @@ import (
 	"strconv"
 )
 
-const APP_VERSION = "1.0.4"
+const APP_VERSION = "1.0.5"
 
 var (
 	BOT_TOKEN             = Env("BOT_TOKEN")
@@ -14,6 +14,8 @@ var (
 	CHAPPIE_SERVER_BEARER = Env("CHAPPIE_SERVER_BEARER")
 	WAPP_TOKEN            = Env("WAPP_TOKEN")
 	WAPP_JID              = Env("WAPP_JID")
+  X_API_KEY             = Env("X_API_KEY")
+  X_URL                 = Env("X_URL")
 	WAPP_SERVER_URL       = Env("WAPP_SERVER_URL")
 	WAPP_ENABLE           = func() bool {
 		if val := Env("WAPP_ENABLE"); val != "" {
