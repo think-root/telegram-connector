@@ -6,6 +6,7 @@ import (
 	"chappie_bot/helpers"
 	"chappie_bot/repository"
 	"chappie_bot/whatsapp"
+	"chappie_bot/x"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -50,17 +51,19 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 		username_repo := strings.TrimPrefix(item.URL, "https://github.com/")
 		telegramMessage := fmt.Sprintf("<a href=\"%s\">🔗 %s</a> %s\n\n<b><a href=\"https://t.me/github_ukraine\">🤖 GitHub Repositories</a></b>", item.URL, username_repo, item.Text)
 
+		image_name := "./tmp/gh_project_img/image.png"
+
 		err = repository.Socialify(username_repo)
 		if err != nil {
 			log.Println(err)
-			err := helpers.CopyFile("./assets/github_octopus_logo.png", "./tmp/gh_project_img/image.png")
+			err := helpers.CopyFile("./assets/github_octopus_logo.png", image_name)
 			if err != nil {
 				log.Printf("Failed to copy file: %v", err)
 				return
 			}
 		}
 
-		fileData, errReadFile := os.ReadFile("./tmp/gh_project_img/image.png")
+		fileData, errReadFile := os.ReadFile(image_name)
 		if errReadFile != nil {
 			log.Printf("error reading file: %v\n", errReadFile)
 			return
@@ -78,12 +81,7 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 			return
 		}
 
-		err = helpers.RemoveAllFilesInFolder("./tmp/gh_project_img")
-		if err != nil {
-			log.Println(err)
-		}
-
-		if config.WAPP_ENABLE	{
+		if config.WAPP_ENABLE {
 			whatsappMessage := fmt.Sprintf("🔗 %s\n\n%s\n\n🤖 GitHub Repositories", item.URL, item.Text)
 			wapp := whatsapp.SendMessageToWhatsApp(whatsappMessage, config.WAPP_JID)
 			if wapp {
@@ -93,10 +91,22 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 			}
 		}
 
+		x_posted := x.CreateXPost(item.Text, item.URL, image_name)
+		if x_posted {
+			log.Println("Message successfully sent to x")
+		} else{
+			log.Println("Message not sent to x")
+		}
+
 		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
 			log.Printf("Error updating repository posted status: %v", err)
 		} else if result {
 			log.Println("Message successfully sent to channel")
+		}
+
+		err = helpers.RemoveAllFilesInFolder("./tmp/gh_project_img")
+		if err != nil {
+			log.Println(err)
 		}
 	})
 	s.StartAsync()
