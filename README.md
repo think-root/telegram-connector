@@ -42,9 +42,13 @@ ADMIN_ID=<your telegram id>
 CHANNEL_ID=<your channel id>
 CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/>
 CHAPPIE_SERVER_BEARER=<chappie_server server token>
+X_API_KEY=<api key for selfhosted x api server https://github.com/Think-Root/x>
+X_URL=<url for selfhosted x api server https://github.com/Think-Root/x>
 ```
 
 ### OPTIONAL VARIABLES
+
+> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DO NOT SET WAPP_ VARIABLES IN THE ENV FILE
 
 Watch this [repository](https://github.com/Think-Root/wapp)
 
@@ -55,8 +59,6 @@ WAPP_JID=<whatsapp chat jid>
 WAPP_TOKEN=<whatsapp app token>
 WAPP_SERVER_URL<server url for>
 ```
-
-> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DON'T SET WAPP_ VARIABLES IN THE ENV FILE
 
 ### Deploy
 
