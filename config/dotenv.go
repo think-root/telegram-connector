@@ -23,7 +23,7 @@ func Env(name string) string {
 	err := LoadEnvFile(envPath)
 	if err != nil {
 		if !testing.Testing() {
-			log.Printf("Помилка завантаження файлу .env: %s", err)
+			log.Printf("Error loading .env file: %s", err)
 		}
 	}
 	return os.Getenv(name)
