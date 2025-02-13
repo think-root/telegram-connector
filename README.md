@@ -1,110 +1,103 @@
-## Table of Contents
+# Chappie Bot 🤖
 
-- [Table of Contents](#table-of-contents)
-- [Description](#description)
-- [Social networks integrations](#social-networks-integrations)
-  - [Telegram](#telegram)
-  - [bot commands](#bot-commands)
-  - [Twitter](#twitter)
-  - [Whatsapp](#whatsapp)
-- [How to run](#how-to-run)
-  - [Requirements](#requirements)
-  - [Clone repo](#clone-repo)
-  - [Config](#config)
-  - [OPTIONAL VARIABLES](#optional-variables)
-  - [Deploy](#deploy)
-- [Contribution](#contribution)
-  - [run](#run)
-  - [build](#build)
+[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/Think-Root/chappie_bot)
+[![License](https://img.shields.io/github/license/Think-Root/chappie_server)](LICENSE)
 
+An AI-powered social media management bot that automatically publishes curated content across multiple platforms including Telegram, Twitter, and WhatsApp. Built to work with [chappie_server](https://github.com/Think-Root/chappie_server).
 
-## Description
+[Read the origin story (in Ukrainian): [Part 1](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-1-VywRW) | [Part 2](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-2-X9Yjz)]
 
-An application that allows you to take content generated in [chappie_server](https://github.com/Think-Root/chappie_server) and publish it in the social networks like telegram/twitter/whatsapp.
+## Features
 
-I once had the idea to create an app that would manage a Telegram channel by searching for and posting interesting repositories using AI. That idea eventually grew into this project. You can read more details about how the idea was born here: [Part 1](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-1-VywRW) and [Part 2](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-2-X9Yjz). (The articles are in Ukrainian, but I think you’ll manage to translate them into your preferred language.)
+- 🔄 Multi-platform posting (Telegram, Twitter, WhatsApp)
+- 🤖 AI-powered content curation
+- ⚡ Automated GitHub repository discovery
+- 📊 Post scheduling and management
+- 🎯 Custom bot commands
 
-## Social networks integrations
+## Quick Start
 
-Currently, the bot supports 3 integrations, two official (telegram, twitter) and one unofficial (whatsapp)
-
-### Telegram
-
-Publishes posts to a Telegram channel, allows managing some functions through a Telegram bot
-
-### bot commands
-
-- **/add** - you can provide a list (or just one) of GitHub repository URLs separated by spaces, a short description will be generated for each, and they will be added to the database.
-- **/next** - displays the next post scheduled for publication in the channel, if you provide a number after a space, that many posts will be shown
-- **/gen** - generates a post for the channel from GitHub trends, if you specify a number after a space, that many posts will be generated and added to the database
-- **/info** - shows information about the posts in the database
-
-### Twitter
-
-This integration allows you to publish posts on your Twitter account. For operation, it requires deploying the [think-root/x](https://github.com/Think-Root/x) app, which implements the official Twitter API in the form of a small server.
-
-
-### Whatsapp
-
-This integration allows you to publish posts to a WhatsApp channel. The integration is not official, and its use may **lead to your WhatsApp account being banned**. To use this integration, you will need to deploy the [think-root/wapp](https://github.com/Think-Root/wapp) app
-
-## How to run
-
-### Requirements
-
-- [docker](https://docs.docker.com/engine/install/) or/and [docker-compose](https://docs.docker.com/compose/install/)
-
-### Clone repo
-
-```shell
+1. Clone the repository:
+```bash
 git clone https://github.com/Think-Root/chappie_bot.git
+cd chappie_bot
 ```
 
-### Config
-
-Create a **.env** file in the app root directory
-
-```properties
-BOT_TOKEN=<bot token https://core.telegram.org/bots>
-ADMIN_ID=<your telegram id>
-CHANNEL_ID=<your channel id>
-CHAPPIE_SERVER_URL=<e.g. http://localhost:8080/>
-CHAPPIE_SERVER_BEARER=<chappie_server server token>
-X_API_KEY=<api key for selfhosted x api server https://github.com/Think-Root/x>
-X_URL=<url for selfhosted x api server https://github.com/Think-Root/x>
+2. Configure environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
 ```
 
-### OPTIONAL VARIABLES
-
-> 🔴 IF YOU ARE NOT READY TO RISK LOSING YOUR WHATSAPP ACCOUNT, DO NOT SET WAPP_ VARIABLES IN THE ENV FILE
-
-Watch this [repository](https://github.com/Think-Root/wapp)
-
-```properties
-ENABLE_CRON=<true/false to enable CollectPostsCron, default is false>
-WAPP_ENABLE=<true/false to enable/disable WhatsApp functionality, default is false>
-WAPP_JID=<whatsapp chat jid>
-WAPP_TOKEN=<whatsapp app token>
-WAPP_SERVER_URL<server url for>
+3. Deploy with Docker:
+```bash
+docker compose up -d
 ```
 
-### Deploy
+## Detailed Configuration
 
-- deploy [this](https://github.com/Think-Root/chappie_server?tab=readme-ov-file#deploy) app
-- build `docker build -t chappie_bot:latest -f Dockerfile .`
-- run `docker run --name chappie_bot --restart always --env-file .env -e TZ=Europe/Kiev --network chappie_network chappie_bot:latest`
-- or via docker compose `docker compose up -d`
+### Required Environment Variables
 
-## Contribution
+| Variable | Description |
+|----------|-------------|
+| BOT_TOKEN | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
+| ADMIN_ID | Your Telegram user ID |
+| CHANNEL_ID | Target Telegram channel ID |
+| CHAPPIE_SERVER_URL | URL of your chappie_server instance |
+| CHAPPIE_SERVER_BEARER | Authentication token for chappie_server |
+| X_API_KEY | API key for X (Twitter) integration |
+| X_URL | URL for self-hosted X API server |
 
-- install [go](https://go.dev/dl/)
+### Optional Environment Variables
 
-### run
-```shell
- go run ./cmd/bot/main.go  
-```
+⚠️ **Warning**: WhatsApp integration is unofficial and may risk account suspension
 
-### build
-```shell
+| Variable | Description | Default |
+|----------|-------------|---------|
+| ENABLE_CRON | Enable post collection cron job | false |
+| WAPP_ENABLE | Enable WhatsApp integration | false |
+| WAPP_JID | WhatsApp chat JID | - |
+| WAPP_TOKEN | WhatsApp authentication token | - |
+| WAPP_SERVER_URL | WhatsApp server URL | - |
+
+## Bot Commands
+
+| Command | Description |
+|---------|-------------|
+| /add [urls] | Add GitHub repositories to content queue |
+| /next [count] | Preview upcoming posts |
+| /gen [count] | Generate posts from GitHub trends |
+| /info | View database statistics |
+
+## Dependencies
+
+- [Docker](https://docs.docker.com/engine/install/)
+- [chappie_server](https://github.com/Think-Root/chappie_server)
+- [Docker Compose](https://docs.docker.com/compose/install/) (optional)
+- [X API Server](https://github.com/Think-Root/x) (optional, for Twitter integration)
+- [WhatsApp Server](https://github.com/Think-Root/wapp) (optional, unofficial and may risk account suspension)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Install Go
+go mod download
+
+# Run locally
+go run ./cmd/bot/main.go
+
+# Build binary
 go build -o chappie_bot ./cmd/bot/main.go
 ```
+
+## License
+
+This project is licensed under the BSD 2-Clause License - see the [LICENSE](LICENSE) file for details.
