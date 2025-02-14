@@ -93,15 +93,15 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 
 		x_posted := x.CreateXPost(item.Text, item.URL, image_name)
 		if x_posted {
-			log.Println("Message successfully sent to x")
-		} else{
-			log.Println("Message not sent to x")
+			log.Println("Message successfully sent to X")
+		} else {
+			log.Println("Message not sent to X")
 		}
 
 		if result, err := repository.UpdateRepositoryPosted(item.URL, true); err != nil {
 			log.Printf("Error updating repository posted status: %v", err)
 		} else if result {
-			log.Println("Message successfully sent to channel")
+			log.Println("Message successfully sent to the telegram channel")
 		}
 
 		err = helpers.RemoveAllFilesInFolder("./tmp/gh_project_img")
