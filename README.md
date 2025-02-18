@@ -1,7 +1,11 @@
 # Chappie Bot 🤖
 
-[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/Think-Root/chappie_bot)
-[![License](https://img.shields.io/github/license/Think-Root/chappie_server)](LICENSE)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/Think-Root/chappie_bot)](https://github.com/Think-Root/chappie_bot)
+[![License](https://img.shields.io/github/license/Think-Root/chappie_bot)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/Think-Root/chappie_bot)](https://github.com/Think-Root/chappie_bot/releases)
+[![Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
+[![Deploy Status](https://github.com/Think-Root/chappie_bot/workflows/Deploy%20chappie_bot/badge.svg)](https://github.com/Think-Root/chappie_bot/actions/workflows/deploy.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Think-Root/chappie_bot)](https://goreportcard.com/report/github.com/Think-Root/chappie_bot)
 
 An AI-powered social media management bot that automatically publishes curated content across multiple platforms including Telegram, Twitter, and WhatsApp. Built to work with [chappie_server](https://github.com/Think-Root/chappie_server).
 
