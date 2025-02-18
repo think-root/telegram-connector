@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 	"os"
+	"strconv"
 	"testing"
 
 	"github.com/joho/godotenv"
@@ -27,4 +28,14 @@ func Env(name string) string {
 		}
 	}
 	return os.Getenv(name)
+}
+
+func parseBoolEnv(key string) bool {
+	if val := Env(key); val != "" {
+		parsed, err := strconv.ParseBool(val)
+		if err == nil {
+			return parsed
+		}
+	}
+	return false
 }

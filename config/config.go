@@ -14,25 +14,9 @@ var (
 	CHAPPIE_SERVER_BEARER = Env("CHAPPIE_SERVER_BEARER")
 	WAPP_TOKEN            = Env("WAPP_TOKEN")
 	WAPP_JID              = Env("WAPP_JID")
-  X_API_KEY             = Env("X_API_KEY")
-  X_URL                 = Env("X_URL")
+	X_API_KEY             = Env("X_API_KEY")
+	X_URL                 = Env("X_URL")
 	WAPP_SERVER_URL       = Env("WAPP_SERVER_URL")
-	WAPP_ENABLE           = func() bool {
-		if val := Env("WAPP_ENABLE"); val != "" {
-			parsed, err := strconv.ParseBool(val)
-			if err == nil {
-				return parsed
-			}
-		}
-		return false
-	}()
-	ENABLE_CRON = func() bool {
-		if val := Env("ENABLE_CRON"); val != "" {
-			parsed, err := strconv.ParseBool(val)
-			if err == nil {
-				return parsed
-			}
-		}
-		return false
-	}()
+	WAPP_ENABLE           = parseBoolEnv("WAPP_ENABLE")
+	ENABLE_CRON           = parseBoolEnv("ENABLE_CRON")
 )
