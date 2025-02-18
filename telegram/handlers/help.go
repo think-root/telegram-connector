@@ -14,7 +14,7 @@ func HelpHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 		b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:    userID,
 			ParseMode: models.ParseModeHTML,
-			Text:      "<b>/add</b> - you can write a list (or one) GitHub repo separated by space, a short description will be generated for them, and they will be added to the DB\n\n<b>/next</b> - shows the next post that will be published in the channel, and if you write a number after space it will show the corresponding number of posts\n\n<b>/gen</b> - well yeah, generates a post for the channel from GitHub trends, if you put a number after space you can specify the quantity\n\n<b>/info</b> - show info about posts from DB\n\n<b>app version:</b> <i>" + config.APP_VERSION + "</i>",		})
+			Text:      "<b>/add</b> - you can write a list (or one) GitHub repo separated by space, a short description will be generated for them, and they will be added to the DB\n\n<b>/next</b> - shows the next post that will be published in the channel, and if you write a number after space it will show the corresponding number of posts\n\n<b>/gen</b> - well yeah, generates a post for the channel from GitHub trends, if you put a number after space you can specify the quantity\n\n<b>/info</b> - show info about posts from DB\n\n<b>app version:</b> <i>" + config.APP_VERSION + "</i>"})
 	} else {
 		b.SendMessage(ctx, &bot.SendMessageParams{
 			ChatID:             userID,

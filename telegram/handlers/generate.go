@@ -107,8 +107,8 @@ func GeneratePostsHandler(ctx context.Context, b *bot.Bot, update *models.Update
 			if message.Len() > 0 {
 				isDisabled := true
 				b.SendMessage(ctx, &bot.SendMessageParams{
-					ChatID: userID,
-					Text:   message.String(),
+					ChatID:             userID,
+					Text:               message.String(),
 					LinkPreviewOptions: &models.LinkPreviewOptions{IsDisabled: &isDisabled},
 				})
 			}

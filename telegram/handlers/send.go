@@ -65,7 +65,7 @@ func SendPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 			log.Println(err)
 		}
 
-		if config.WAPP_ENABLE	{
+		if config.WAPP_ENABLE {
 			whatsappMessage := fmt.Sprintf("🔗 %s\n\n%s\n\n🤖 GitHub Repositories", item.URL, item.Text)
 			wapp := whatsapp.SendMessageToWhatsApp(whatsappMessage, config.WAPP_JID)
 			if wapp {

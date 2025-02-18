@@ -18,9 +18,9 @@ type repo struct {
 
 type repositoryResponse struct {
 	Data struct {
-		All      int          `json:"all"`
-		Posted   int          `json:"posted"`
-		Unposted int          `json:"unposted"`
+		All      int    `json:"all"`
+		Posted   int    `json:"posted"`
+		Unposted int    `json:"unposted"`
 		Items    []repo `json:"items"`
 	} `json:"data"`
 	Message string `json:"message"`
