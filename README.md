@@ -72,6 +72,7 @@ docker compose up -d
 | /next [count] | Preview upcoming posts |
 | /gen [count] | Generate posts from GitHub trends |
 | /info | View database statistics |
+| /xsend | Send post to X (Twitter) |
 
 ## Dependencies
 
