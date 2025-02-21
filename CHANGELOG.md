@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/Think-Root/chappie_bot/compare/v1.1.0...v1.2.0) (2025-02-21)
+
+
+### Features
+
+* add /xsend command to README for sending posts to X (Twitter) ([fda0081](https://github.com/Think-Root/chappie_bot/commit/fda00814260638298ea7393423fd06616b619aaf))
+* implement SendPostToXHandler for sending posts to X (Twitter) ([e68f970](https://github.com/Think-Root/chappie_bot/commit/e68f9704a6ef6aa013c88a370c885356edb7fe8d))
+* register /xsend command handler for sending posts to X (Twitter) ([ef794bf](https://github.com/Think-Root/chappie_bot/commit/ef794bf462a0e675cbdd00527b7c12331aa78284))
+
 # [1.1.0](https://github.com/Think-Root/chappie_bot/compare/v1.0.5...v1.1.0) (2025-02-18)
 
 
