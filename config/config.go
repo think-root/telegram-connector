@@ -4,7 +4,7 @@ import (
 	"strconv"
 )
 
-const APP_VERSION = "1.1.0"
+const APP_VERSION = "1.4.0"
 
 var (
 	BOT_TOKEN             = Env("BOT_TOKEN")
