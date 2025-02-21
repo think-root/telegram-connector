@@ -2,7 +2,7 @@ name: Release chappie_bot
 
 on:
   workflow_run:
-    workflows: ["Deploy chappie_bot"]
+    workflows: ["Gitleaks Security Scan"]
     types:
       - completed
     branches:
