@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Think-Root/chappie_bot/compare/v1.3.0...v1.4.0) (2025-02-21)
+
+
+### Features
+
+* add success and error messages for sending posts to X ([98d9539](https://github.com/Think-Root/chappie_bot/commit/98d9539f186f80708e388938a9c327371cf2da99))
+
 # [1.3.0](https://github.com/Think-Root/chappie_bot/compare/v1.2.0...v1.3.0) (2025-02-21)
 
 
