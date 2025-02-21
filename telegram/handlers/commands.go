@@ -53,4 +53,10 @@ func RegisterCommands(b *bot.Bot) {
 		bot.MatchTypePrefix,
 		SendPostHandler,
 	)
+	b.RegisterHandler(
+		bot.HandlerTypeMessageText,
+		"/xsend",
+		bot.MatchTypePrefix,
+		SendPostToXHandler,
+	)
 }
