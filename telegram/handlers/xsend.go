@@ -41,8 +41,16 @@ func SendPostToXHandler(ctx context.Context, b *bot.Bot, update *models.Update) 
 
 		x_posted := x.CreateXPost(item.Text, item.URL, image_name)
 		if x_posted {
+			b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID: userID,
+				Text:   "✅ Message successfully sent to X",
+			})
 			log.Println("Message successfully sent to X")
 		} else {
+			b.SendMessage(ctx, &bot.SendMessageParams{
+				ChatID: userID,
+				Text:   "❌ Message not sent to X",
+			})
 			log.Println("Message not sent to X")
 		}
 
