@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"chappie_bot/config"
 	"io"
+	"log"
 	"mime/multipart"
 	"net/http"
 	"os"
@@ -13,6 +14,7 @@ import (
 func CreateXPost(text, repoUrl, filename string) bool {
 	apiKey := config.X_API_KEY
 	if apiKey == "" {
+		log.Println("X API key is empty")
 		return false
 	}
 
@@ -21,25 +23,30 @@ func CreateXPost(text, repoUrl, filename string) bool {
 	writer := multipart.NewWriter(body)
 
 	if err := writer.WriteField("text", text); err != nil {
+		log.Printf("Failed to write text field: %v", err)
 		return false
 	}
 
 	if err := writer.WriteField("url", repoUrl); err != nil {
+		log.Printf("Failed to write url field: %v", err)
 		return false
 	}
 
 	file, err := os.Open(filename)
 	if err != nil {
+		log.Printf("Failed to open file %s: %v", filename, err)
 		return false
 	}
 	defer file.Close()
 
 	part, err := writer.CreateFormFile("image", filepath.Base(filename))
 	if err != nil {
+		log.Printf("Failed to create form file: %v", err)
 		return false
 	}
 
 	if _, err = io.Copy(part, file); err != nil {
+		log.Printf("Failed to copy file contents: %v", err)
 		return false
 	}
 
@@ -47,6 +54,7 @@ func CreateXPost(text, repoUrl, filename string) bool {
 
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
+		log.Printf("Failed to create request: %v", err)
 		return false
 	}
 
@@ -56,9 +64,15 @@ func CreateXPost(text, repoUrl, filename string) bool {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
+		log.Printf("Failed to send request: %v", err)
 		return false
 	}
 	defer resp.Body.Close()
 
-	return resp.StatusCode == http.StatusOK
+	if resp.StatusCode != http.StatusOK {
+		log.Printf("Request failed with status code: %d", resp.StatusCode)
+		return false
+	}
+
+	return true
 }
