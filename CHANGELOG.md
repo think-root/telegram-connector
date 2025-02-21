@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Think-Root/chappie_bot/compare/v1.2.0...v1.3.0) (2025-02-21)
+
+
+### Features
+
+* enhance error logging in CreateXPost function for better debugging ([3176ca1](https://github.com/Think-Root/chappie_bot/commit/3176ca1306de3c33d55e52b9a0a26bd93ca2a225))
+
 # [1.2.0](https://github.com/Think-Root/chappie_bot/compare/v1.1.0...v1.2.0) (2025-02-21)
 
 
