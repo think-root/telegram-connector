@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/Think-Root/chappie_bot/compare/v1.4.0...v1.5.0) (2025-02-21)
+
+
+### Bug Fixes
+
+* update release workflow to trigger on Gitleaks Security Scan ([324addd](https://github.com/Think-Root/chappie_bot/commit/324addd300b02b5892140cb43222e59d681cf02c))
+
+
+### Features
+
+* add APP_VERSION argument to Docker build in docker-compose.yml ([4224316](https://github.com/Think-Root/chappie_bot/commit/422431617a2644cd245502a3b6bc3d78e4254eba))
+* add APP_VERSION argument to Dockerfile for versioning in build ([6041f15](https://github.com/Think-Root/chappie_bot/commit/6041f15a5070c1afdfe00d0fd2be347d2204a9b6))
+* update deployment workflow to trigger on release and include versioning in Docker build ([3029347](https://github.com/Think-Root/chappie_bot/commit/3029347c3c5f303cc8a1c75a80467b7a499ea104))
+
 # [1.4.0](https://github.com/Think-Root/chappie_bot/compare/v1.3.0...v1.4.0) (2025-02-21)
 
 
