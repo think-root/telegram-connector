@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        APP_VERSION: ${APP_VERSION}
     env_file:
       - .env
     environment:
@@ -15,4 +17,4 @@ services:
 
 networks:
   chappie_network:
-    external: true 
+    external: true
