@@ -4,7 +4,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o chappie_bot ./cmd/bot/main.go
+
+ARG APP_VERSION=dev
+RUN go build -ldflags="-X 'chappie_bot/config.APP_VERSION=${APP_VERSION}'" -o chappie_bot ./cmd/bot/main.go
 
 # Runtime
 FROM alpine:3.16
