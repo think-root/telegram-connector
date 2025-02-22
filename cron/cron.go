@@ -2,11 +2,6 @@ package cron
 
 import (
 	"bytes"
-	"chappie_bot/config"
-	"chappie_bot/helpers"
-	"chappie_bot/repository"
-	"chappie_bot/whatsapp"
-	"chappie_bot/x"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -16,6 +11,12 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"chappie_bot/config"
+	"chappie_bot/helpers"
+	"chappie_bot/repository"
+	"chappie_bot/whatsapp"
+	"chappie_bot/x"
 
 	"github.com/go-co-op/gocron"
 	"github.com/go-telegram/bot"

@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	"context"
+	"log"
+	"strings"
+
 	"chappie_bot/config"
 	"chappie_bot/helpers"
 	"chappie_bot/repository"
 	"chappie_bot/x"
-	"context"
-	"log"
-	"strings"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

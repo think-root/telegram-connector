@@ -2,15 +2,16 @@ package handlers
 
 import (
 	"bytes"
-	"chappie_bot/config"
-	"chappie_bot/helpers"
-	"chappie_bot/repository"
-	"chappie_bot/whatsapp"
 	"context"
 	"fmt"
 	"log"
 	"os"
 	"strings"
+
+	"chappie_bot/config"
+	"chappie_bot/helpers"
+	"chappie_bot/repository"
+	"chappie_bot/whatsapp"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
@@ -80,7 +81,8 @@ func SendPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 		} else if result {
 			b.SendMessage(ctx, &bot.SendMessageParams{
 				ChatID: config.ADMIN_ID,
-				Text:   "Message successfully sent"})
+				Text:   "Message successfully sent",
+			})
 		}
 	}
 }

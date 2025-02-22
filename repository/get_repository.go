@@ -1,12 +1,13 @@
 package repository
 
 import (
-	"chappie_bot/config"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"strings"
+
+	"chappie_bot/config"
 )
 
 type repo struct {

@@ -1,11 +1,12 @@
 package repository
 
 import (
-	"chappie_bot/config"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
+
+	"chappie_bot/config"
 )
 
 type updateResponse struct {

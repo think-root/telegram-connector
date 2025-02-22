@@ -1,16 +1,16 @@
 package main
 
 import (
+	"context"
+	"log"
+	"os"
+	"os/signal"
+
 	"chappie_bot/config"
 	"chappie_bot/cron"
 	"chappie_bot/helpers"
 	"chappie_bot/telegram/handlers"
 	"chappie_bot/telegram/middlewares"
-
-	"context"
-	"log"
-	"os"
-	"os/signal"
 
 	"github.com/go-telegram/bot"
 )

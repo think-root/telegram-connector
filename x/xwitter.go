@@ -2,13 +2,14 @@ package x
 
 import (
 	"bytes"
-	"chappie_bot/config"
 	"io"
 	"log"
 	"mime/multipart"
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"chappie_bot/config"
 )
 
 func CreateXPost(text, repoUrl, filename string) bool {

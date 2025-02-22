@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"bytes"
-	"chappie_bot/config"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -11,6 +10,8 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+
+	"chappie_bot/config"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

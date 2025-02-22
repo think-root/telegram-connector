@@ -2,9 +2,10 @@ package whatsapp
 
 import (
 	"bytes"
-	"chappie_bot/config"
 	"encoding/json"
 	"net/http"
+
+	"chappie_bot/config"
 )
 
 type WhatsAppRequest struct {

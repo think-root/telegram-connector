@@ -2,13 +2,14 @@ package handlers
 
 import (
 	"bytes"
-	"chappie_bot/config"
 	"context"
 	"encoding/json"
 	"io"
 	"log"
 	"net/http"
 	"strings"
+
+	"chappie_bot/config"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
@@ -24,7 +25,8 @@ func ManualAddPostHandler(ctx context.Context, b *bot.Bot, update *models.Update
 		if repoURLs == "" {
 			b.SendMessage(ctx, &bot.SendMessageParams{
 				ChatID: userID,
-				Text:   "Please provide at least one GitHub repository URL"})
+				Text:   "Please provide at least one GitHub repository URL",
+			})
 			return
 		}
 
