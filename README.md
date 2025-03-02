@@ -7,17 +7,7 @@
 [![Deploy Status](https://github.com/think-root/telegram-bridge/workflows/Deploy%20telegram-bridge/badge.svg)](https://github.com/think-root/telegram-bridge/actions/workflows/deploy.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/think-root/telegram-bridge)](https://goreportcard.com/report/github.com/think-root/telegram-bridge)
 
-An AI-powered social media management bot that automatically publishes curated content across multiple platforms including Telegram, Twitter, and WhatsApp. Built to work with [content-alchemist](https://github.com/think-root/content-alchemist).
-
-[Read the origin story (in Ukrainian): [Part 1](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-1-VywRW) | [Part 2](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-2-X9Yjz)]
-
-## Features
-
-- 🔄 Multi-platform posting (Telegram, Twitter, WhatsApp)
-- 🤖 AI-powered content curation
-- ⚡ Automated GitHub repository discovery
-- 📊 Post scheduling and management
-- 🎯 Custom bot commands
+This app is part of [content-alchemist](https://github.com/think-root/content-alchemist). It is a Telegram integration that performs a simple function — publishing content to a Telegram [channel](https://t.me/github_ukraine).
 
 ## Quick Start
 
@@ -63,16 +53,6 @@ docker compose up -d
 | WAPP_JID | WhatsApp chat JID | - |
 | WAPP_TOKEN | WhatsApp authentication token | - |
 | WAPP_SERVER_URL | WhatsApp server URL | - |
-
-## Bot Commands
-
-| Command | Description |
-|---------|-------------|
-| /add [urls] | Add GitHub repositories to content queue |
-| /next [count] | Preview upcoming posts |
-| /gen [count] | Generate posts from GitHub trends |
-| /info | View database statistics |
-| /xsend | Send post to X (Twitter) |
 
 ## Dependencies
 
