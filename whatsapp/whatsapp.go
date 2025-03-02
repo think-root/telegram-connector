@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"chappie_bot/config"
+	"telegram-bridge/config"
 )
 
 type WhatsAppRequest struct {

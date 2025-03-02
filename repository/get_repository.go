@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"chappie_bot/config"
+	"telegram-bridge/config"
 )
 
 type repo struct {

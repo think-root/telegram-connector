@@ -9,7 +9,7 @@ import (
 	"log"
 	"net/http"
 
-	"chappie_bot/config"
+	"telegram-bridge/config"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

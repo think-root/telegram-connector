@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"chappie_bot/config"
-	"chappie_bot/helpers"
-	"chappie_bot/repository"
-	"chappie_bot/whatsapp"
-	"chappie_bot/x"
+	"telegram-bridge/config"
+	"telegram-bridge/helpers"
+	"telegram-bridge/repository"
+	"telegram-bridge/whatsapp"
+	"telegram-bridge/x"
 
 	"github.com/go-co-op/gocron"
 	"github.com/go-telegram/bot"

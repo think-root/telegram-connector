@@ -8,10 +8,10 @@ import (
 	"os"
 	"strings"
 
-	"chappie_bot/config"
-	"chappie_bot/helpers"
-	"chappie_bot/repository"
-	"chappie_bot/whatsapp"
+	"telegram-bridge/config"
+	"telegram-bridge/helpers"
+	"telegram-bridge/repository"
+	"telegram-bridge/whatsapp"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

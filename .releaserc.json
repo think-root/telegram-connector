@@ -1,6 +1,6 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/Think-Root/chappie_bot.git",
+  "repositoryUrl": "https://github.com/think-root/telegram-bridge.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

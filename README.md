@@ -1,13 +1,13 @@
-# Chappie Bot 🤖
+# telegram-bridge
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/Think-Root/chappie_bot)](https://github.com/Think-Root/chappie_bot)
-[![License](https://img.shields.io/github/license/Think-Root/chappie_bot)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/Think-Root/chappie_bot)](https://github.com/Think-Root/chappie_bot/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/think-root/telegram-bridge)](https://github.com/think-root/telegram-bridge)
+[![License](https://img.shields.io/github/license/think-root/telegram-bridge)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/think-root/telegram-bridge)](https://github.com/think-root/telegram-bridge/releases)
 [![Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Deploy Status](https://github.com/Think-Root/chappie_bot/workflows/Deploy%20chappie_bot/badge.svg)](https://github.com/Think-Root/chappie_bot/actions/workflows/deploy.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Think-Root/chappie_bot)](https://goreportcard.com/report/github.com/Think-Root/chappie_bot)
+[![Deploy Status](https://github.com/think-root/telegram-bridge/workflows/Deploy%20telegram-bridge/badge.svg)](https://github.com/think-root/telegram-bridge/actions/workflows/deploy.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/think-root/telegram-bridge)](https://goreportcard.com/report/github.com/think-root/telegram-bridge)
 
-An AI-powered social media management bot that automatically publishes curated content across multiple platforms including Telegram, Twitter, and WhatsApp. Built to work with [chappie_server](https://github.com/Think-Root/chappie_server).
+An AI-powered social media management bot that automatically publishes curated content across multiple platforms including Telegram, Twitter, and WhatsApp. Built to work with [content-alchemist](https://github.com/think-root/content-alchemist).
 
 [Read the origin story (in Ukrainian): [Part 1](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-1-VywRW) | [Part 2](https://drukarnia.com.ua/articles/yak-chatgpt-vede-za-mene-kanal-v-telegram-i-u-nogo-ce-maizhe-vikhodit-chastina-2-X9Yjz)]
 
@@ -23,8 +23,8 @@ An AI-powered social media management bot that automatically publishes curated c
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Think-Root/chappie_bot.git
-cd chappie_bot
+git clone https://github.com/think-root/telegram-bridge.git
+cd telegram-bridge
 ```
 
 2. Configure environment variables:
@@ -47,8 +47,8 @@ docker compose up -d
 | BOT_TOKEN | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
 | ADMIN_ID | Your Telegram user ID |
 | CHANNEL_ID | Target Telegram channel ID |
-| CHAPPIE_SERVER_URL | URL of your chappie_server instance |
-| CHAPPIE_SERVER_BEARER | Authentication token for chappie_server |
+| CHAPPIE_SERVER_URL | URL of your content-alchemist instance |
+| CHAPPIE_SERVER_BEARER | Authentication token for content-alchemist |
 | X_API_KEY | API key for X (Twitter) integration |
 | X_URL | URL for self-hosted X API server |
 
@@ -77,10 +77,10 @@ docker compose up -d
 ## Dependencies
 
 - [Docker](https://docs.docker.com/engine/install/)
-- [chappie_server](https://github.com/Think-Root/chappie_server)
+- [content-alchemist](https://github.com/think-root/content-alchemist)
 - [Docker Compose](https://docs.docker.com/compose/install/) (optional)
-- [X API Server](https://github.com/Think-Root/x) (optional, for Twitter integration)
-- [WhatsApp Server](https://github.com/Think-Root/wapp) (optional, unofficial and may risk account suspension)
+- [X API Server](https://github.com/think-root/x) (optional, for Twitter integration)
+- [WhatsApp Server](https://github.com/think-root/wapp) (optional, unofficial and may risk account suspension)
 
 ## Contributing
 
@@ -100,7 +100,7 @@ go mod download
 go run ./cmd/bot/main.go
 
 # Build binary
-go build -o chappie_bot ./cmd/bot/main.go
+go build -o telegram-bridge ./cmd/bot/main.go
 ```
 
 ## License

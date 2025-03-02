@@ -1,8 +1,8 @@
-name: Deploy chappie_bot
+name: Deploy telegram-bridge
 
 on:
   workflow_run:
-    workflows: ["Release chappie_bot"]
+    workflows: ["Release telegram-bridge"]
     types:
       - completed
     branches:
@@ -84,7 +84,7 @@ jobs:
             docker compose build --build-arg APP_VERSION=$APP_VERSION
 
             # Зупинка та видалення існуючого контейнера
-            if docker inspect chappie_bot >/dev/null 2>&1; then
+            if docker inspect telegram-bridge >/dev/null 2>&1; then
               echo "Stopping and removing existing container..."
               docker compose down -v --rmi all
             fi

@@ -1,4 +1,4 @@
-name: Release chappie_bot
+name: Release telegram-bridge
 
 on:
   workflow_run:

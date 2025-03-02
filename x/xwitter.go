@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"chappie_bot/config"
+	"telegram-bridge/config"
 )
 
 func CreateXPost(text, repoUrl, filename string) bool {

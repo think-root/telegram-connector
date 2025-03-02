@@ -6,11 +6,11 @@ import (
 	"os"
 	"os/signal"
 
-	"chappie_bot/config"
-	"chappie_bot/cron"
-	"chappie_bot/helpers"
-	"chappie_bot/telegram/handlers"
-	"chappie_bot/telegram/middlewares"
+	"telegram-bridge/config"
+	"telegram-bridge/cron"
+	"telegram-bridge/helpers"
+	"telegram-bridge/telegram/handlers"
+	"telegram-bridge/telegram/middlewares"
 
 	"github.com/go-telegram/bot"
 )

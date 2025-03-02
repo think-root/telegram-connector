@@ -1,8 +1,8 @@
 services:
-  chappie_bot:
-    container_name: chappie_bot
+  telegram-bridge:
+    container_name: telegram-bridge
     restart: always
-    image: chappie_bot:latest
+    image: telegram-bridge:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,8 +13,8 @@ services:
     environment:
       TZ: Europe/Kiev
     networks:
-      - chappie_network
+      - alchemist_network
 
 networks:
-  chappie_network:
+  alchemist_network:
     external: true

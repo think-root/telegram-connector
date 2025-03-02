@@ -1,4 +1,4 @@
-module chappie_bot
+module telegram-bridge
 
 go 1.23
 
