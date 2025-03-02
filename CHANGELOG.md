@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/think-root/telegram-bridge/compare/v1.6.0...v1.6.1) (2025-03-02)
+
+
+### Bug Fixes
+
+* update network name in docker-compose.yml from alchemist_network to think-root-network ([4b84dd1](https://github.com/think-root/telegram-bridge/commit/4b84dd1d529bc8752330c9b57d8c069603cb8d1c))
+
 # [1.6.0](https://github.com/Think-Root/chappie_bot/compare/v1.5.0...v1.6.0) (2025-03-02)
 
 
