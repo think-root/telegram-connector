@@ -57,7 +57,7 @@ func SendMessageCron(ctx context.Context, b *bot.Bot) {
 		err = repository.Socialify(username_repo)
 		if err != nil {
 			log.Println(err)
-			err := helpers.CopyFile("./assets/github_octopus_logo.png", image_name)
+			err := helpers.CopyFile("./assets/banner.jpg", image_name)
 			if err != nil {
 				log.Printf("Failed to copy file: %v", err)
 				return
