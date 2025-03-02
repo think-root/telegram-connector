@@ -1,3 +1,18 @@
+# [1.6.0](https://github.com/Think-Root/chappie_bot/compare/v1.5.0...v1.6.0) (2025-03-02)
+
+
+### Bug Fixes
+
+* update image file in SendPostHandler function ([ef7561f](https://github.com/Think-Root/chappie_bot/commit/ef7561f8624dae3ff3eed31cfba38db7a15796db))
+* update image file in SendPostToXHandler function ([321699c](https://github.com/Think-Root/chappie_bot/commit/321699cd9d1f03d38643f739bc6eec3034838f7e))
+* update image file path in SendMessageCron function ([7730177](https://github.com/Think-Root/chappie_bot/commit/7730177e97cc6698e71ece18a28d0cc846b23151))
+
+
+### Features
+
+* add assets directory to Dockerfile ([d100f8b](https://github.com/Think-Root/chappie_bot/commit/d100f8b957607286108a21a169e208fd4831d669))
+* add new banner image ([f8af6ff](https://github.com/Think-Root/chappie_bot/commit/f8af6ffbb5cdd5a5b42a510ba619c4ab2e3b9c6d))
+
 # [1.5.0](https://github.com/Think-Root/chappie_bot/compare/v1.4.0...v1.5.0) (2025-02-21)
 
 
