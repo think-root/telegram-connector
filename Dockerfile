@@ -13,4 +13,5 @@ FROM alpine:3.16
 WORKDIR /app
 COPY --from=builder /app/chappie_bot .
 COPY .env /app/.env
+COPY assets/ /app/assets/
 CMD ["./chappie_bot"]
