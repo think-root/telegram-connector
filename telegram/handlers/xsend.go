@@ -34,7 +34,7 @@ func SendPostToXHandler(ctx context.Context, b *bot.Bot, update *models.Update) 
 		err = repository.Socialify(username_repo)
 		if err != nil {
 			log.Println(err)
-			err := helpers.CopyFile("./assets/github_octopus_logo.png", "./tmp/gh_project_img/image.png")
+			err := helpers.CopyFile("./assets/banner.jpg", "./tmp/gh_project_img/image.png")
 			if err != nil {
 				log.Fatalf("Failed to copy file: %v", err)
 			}
