@@ -131,7 +131,7 @@ func CollectPostsCron(ctx context.Context, b *bot.Bot) {
 			return
 		}
 
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/auto-generate/", bytes.NewBuffer(jsonData))
+		req, err := http.NewRequest("POST", config.CONTENT_ALCHEMIST_URL+"think-root/api/auto-generate/", bytes.NewBuffer(jsonData))
 		if err != nil {
 			log.Printf("Error creating request: %v", err)
 			return
@@ -140,7 +140,7 @@ func CollectPostsCron(ctx context.Context, b *bot.Bot) {
 		req.Header.Set("Accept", "*/*")
 		req.Header.Set("Connection", "keep-alive")
 		req.Header.Set("Content-Type", "application/json")
-		req.Header.Set("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+		req.Header.Set("Authorization", "Bearer "+config.CONTENT_ALCHEMIST_BEARER)
 
 		client := &http.Client{}
 		resp, err := client.Do(req)

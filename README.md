@@ -47,8 +47,8 @@ docker compose up -d
 | BOT_TOKEN | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
 | ADMIN_ID | Your Telegram user ID |
 | CHANNEL_ID | Target Telegram channel ID |
-| CHAPPIE_SERVER_URL | URL of your content-alchemist instance |
-| CHAPPIE_SERVER_BEARER | Authentication token for content-alchemist |
+| CONTENT_ALCHEMIST_URL | URL of your content-alchemist instance |
+| CONTENT_ALCHEMIST_BEARER | Authentication token for content-alchemist |
 | X_API_KEY | API key for X (Twitter) integration |
 | X_URL | URL for self-hosted X API server |
 

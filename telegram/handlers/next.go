@@ -52,7 +52,7 @@ func NextPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 	}
 
 	requestBody := fmt.Sprintf(`{"limit": %d, "posted": false}`, limit)
-	req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
+	req, err := http.NewRequest("POST", config.CONTENT_ALCHEMIST_URL+"think-root/api/get-repository/", bytes.NewBuffer([]byte(requestBody)))
 	if err != nil {
 		log.Panicln(err)
 		return
@@ -60,7 +60,7 @@ func NextPostHandler(ctx context.Context, b *bot.Bot, update *models.Update) {
 
 	req.Header.Set("Accept", "*/*")
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Add("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+	req.Header.Add("Authorization", "Bearer "+config.CONTENT_ALCHEMIST_BEARER)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

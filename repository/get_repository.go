@@ -29,7 +29,7 @@ type repositoryResponse struct {
 }
 
 func GetRepository(limit int, posted bool) (*repositoryResponse, error) {
-	url := config.CHAPPIE_SERVER_URL + "think-root/api/get-repository/"
+	url := config.CONTENT_ALCHEMIST_URL + "think-root/api/get-repository/"
 
 	payload := strings.NewReader(fmt.Sprintf(`{
 		"limit": %d,
@@ -44,7 +44,7 @@ func GetRepository(limit int, posted bool) (*repositoryResponse, error) {
 	req.Header.Add("Accept", "*/*")
 	req.Header.Add("Connection", "keep-alive")
 	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+	req.Header.Add("Authorization", "Bearer "+config.CONTENT_ALCHEMIST_BEARER)
 
 	client := &http.Client{}
 	res, err := client.Do(req)

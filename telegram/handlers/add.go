@@ -42,14 +42,14 @@ func ManualAddPostHandler(ctx context.Context, b *bot.Bot, update *models.Update
 			return
 		}
 
-		req, err := http.NewRequest("POST", config.CHAPPIE_SERVER_URL+"think-root/api/manual-generate/", bytes.NewBuffer(jsonBody))
+		req, err := http.NewRequest("POST", config.CONTENT_ALCHEMIST_URL+"think-root/api/manual-generate/", bytes.NewBuffer(jsonBody))
 		if err != nil {
 			log.Println(err)
 			return
 		}
 
 		req.Header.Set("Accept", "*/*")
-		req.Header.Add("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+		req.Header.Add("Authorization", "Bearer "+config.CONTENT_ALCHEMIST_BEARER)
 		req.Header.Set("Connection", "keep-alive")
 		req.Header.Set("Content-Type", "application/json")
 

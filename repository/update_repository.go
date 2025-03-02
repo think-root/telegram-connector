@@ -15,7 +15,7 @@ type updateResponse struct {
 }
 
 func UpdateRepositoryPosted(url string, posted bool) (bool, error) {
-	apiURL := config.CHAPPIE_SERVER_URL + "think-root/api/update-posted/"
+	apiURL := config.CONTENT_ALCHEMIST_URL + "think-root/api/update-posted/"
 
 	payload := strings.NewReader(fmt.Sprintf(`{
 		"url": "%s",
@@ -30,7 +30,7 @@ func UpdateRepositoryPosted(url string, posted bool) (bool, error) {
 	req.Header.Add("Accept", "*/*")
 	req.Header.Add("Connection", "keep-alive")
 	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("Authorization", "Bearer "+config.CHAPPIE_SERVER_BEARER)
+	req.Header.Add("Authorization", "Bearer "+config.CONTENT_ALCHEMIST_BEARER)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
