@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"telegram-bridge/config"
+	"telegram-connector/config"
 )
 
 type repo struct {

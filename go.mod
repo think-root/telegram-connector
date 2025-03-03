@@ -1,4 +1,4 @@
-module telegram-bridge
+module telegram-connector
 
 go 1.23
 

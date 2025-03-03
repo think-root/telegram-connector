@@ -1,4 +1,4 @@
-name: Release telegram-bridge
+name: Release telegram-connector
 
 on:
   workflow_dispatch:

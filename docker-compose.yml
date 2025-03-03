@@ -1,8 +1,8 @@
 services:
-  telegram-bridge:
-    container_name: telegram-bridge
+  telegram-connector:
+    container_name: telegram-connector
     restart: always
-    image: telegram-bridge:latest
+    image: telegram-connector:latest
     build:
       context: .
       dockerfile: Dockerfile

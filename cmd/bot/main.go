@@ -6,11 +6,11 @@ import (
 	"os"
 	"os/signal"
 
-	"telegram-bridge/config"
-	"telegram-bridge/cron"
-	"telegram-bridge/helpers"
-	"telegram-bridge/telegram/handlers"
-	"telegram-bridge/telegram/middlewares"
+	"telegram-connector/config"
+	"telegram-connector/cron"
+	"telegram-connector/helpers"
+	"telegram-connector/telegram/handlers"
+	"telegram-connector/telegram/middlewares"
 
 	"github.com/go-telegram/bot"
 )

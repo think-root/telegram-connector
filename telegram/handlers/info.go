@@ -9,7 +9,7 @@ import (
 	"log"
 	"net/http"
 
-	"telegram-bridge/config"
+	"telegram-connector/config"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

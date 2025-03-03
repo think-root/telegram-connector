@@ -1,6 +1,6 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/think-root/telegram-bridge.git",
+  "repositoryUrl": "https://github.com/think-root/telegram-connector.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"telegram-bridge/config"
-	"telegram-bridge/helpers"
-	"telegram-bridge/repository"
-	"telegram-bridge/whatsapp"
-	"telegram-bridge/x"
+	"telegram-connector/config"
+	"telegram-connector/helpers"
+	"telegram-connector/repository"
+	"telegram-connector/whatsapp"
+	"telegram-connector/x"
 
 	"github.com/go-co-op/gocron"
 	"github.com/go-telegram/bot"

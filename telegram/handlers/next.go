@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"telegram-bridge/config"
+	"telegram-connector/config"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

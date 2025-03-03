@@ -1,9 +1,9 @@
-name: Deploy telegram-bridge
+name: Deploy telegram-connector
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Release telegram-bridge"]
+    workflows: ["Release telegram-connector"]
     types:
       - completed
     branches:
@@ -85,7 +85,7 @@ jobs:
             docker compose build --build-arg APP_VERSION=$APP_VERSION
 
             # Зупинка та видалення існуючого контейнера
-            if docker inspect telegram-bridge >/dev/null 2>&1; then
+            if docker inspect telegram-connector >/dev/null 2>&1; then
               echo "Stopping and removing existing container..."
               docker compose down -v --rmi all
             fi

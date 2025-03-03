@@ -1,11 +1,11 @@
-# telegram-bridge
+# telegram-connector
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/think-root/telegram-bridge)](https://github.com/think-root/telegram-bridge)
-[![License](https://img.shields.io/github/license/think-root/telegram-bridge)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/think-root/telegram-bridge)](https://github.com/think-root/telegram-bridge/releases)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/think-root/telegram-connector)](https://github.com/think-root/telegram-connector)
+[![License](https://img.shields.io/github/license/think-root/telegram-connector)](LICENSE)
+[![Version](https://img.shields.io/github/v/release/think-root/telegram-connector)](https://github.com/think-root/telegram-connector/releases)
 [![Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Deploy Status](https://github.com/think-root/telegram-bridge/workflows/Deploy%20telegram-bridge/badge.svg)](https://github.com/think-root/telegram-bridge/actions/workflows/deploy.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/think-root/telegram-bridge)](https://goreportcard.com/report/github.com/think-root/telegram-bridge)
+[![Deploy Status](https://github.com/think-root/telegram-connector/workflows/Deploy%20telegram-connector/badge.svg)](https://github.com/think-root/telegram-connector/actions/workflows/deploy.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/think-root/telegram-connector)](https://goreportcard.com/report/github.com/think-root/telegram-connector)
 
 This app is part of [content-alchemist](https://github.com/think-root/content-alchemist). It is a Telegram integration that performs a simple function — publishing content to a Telegram [channel](https://t.me/github_ukraine).
 
@@ -13,8 +13,8 @@ This app is part of [content-alchemist](https://github.com/think-root/content-al
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/think-root/telegram-bridge.git
-cd telegram-bridge
+git clone https://github.com/think-root/telegram-connector.git
+cd telegram-connector
 ```
 
 2. Configure environment variables:
@@ -80,7 +80,7 @@ go mod download
 go run ./cmd/bot/main.go
 
 # Build binary
-go build -o telegram-bridge ./cmd/bot/main.go
+go build -o telegram-connector ./cmd/bot/main.go
 ```
 
 ## License

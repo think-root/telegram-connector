@@ -5,10 +5,10 @@ import (
 	"log"
 	"strings"
 
-	"telegram-bridge/config"
-	"telegram-bridge/helpers"
-	"telegram-bridge/repository"
-	"telegram-bridge/x"
+	"telegram-connector/config"
+	"telegram-connector/helpers"
+	"telegram-connector/repository"
+	"telegram-connector/x"
 
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"

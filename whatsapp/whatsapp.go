@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"telegram-bridge/config"
+	"telegram-connector/config"
 )
 
 type WhatsAppRequest struct {
