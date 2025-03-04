@@ -1,3 +1,20 @@
+# [1.7.0](https://github.com/think-root/telegram-connector/compare/v1.6.1...v1.7.0) (2025-03-04)
+
+
+### Bug Fixes
+
+* **telegram:** update PingHandler to use correct ChatID for responses ([e1405fb](https://github.com/think-root/telegram-connector/commit/e1405fb90c87922565df6a60ace7b838ca606d67))
+* update Dockerfile to build from the correct main.go path ([3654233](https://github.com/think-root/telegram-connector/commit/3654233be521649331fa8a55f6ee61e8cd1ef6b4))
+
+
+### Features
+
+* add main application entry point ([b01863b](https://github.com/think-root/telegram-connector/commit/b01863b12487c59923f766ec0e7e72fd5eb2a978))
+* implement HTTP server with Telegram message endpoint ([76216b2](https://github.com/think-root/telegram-connector/commit/76216b20b73e97ef40140ff145ce82e7efabc879))
+* **telegram:** add logging middleware to log incoming Telegram updates ([5d48a50](https://github.com/think-root/telegram-connector/commit/5d48a50842da8cf16616bd063e2e10b7cd10f2d9))
+* **telegram:** add SendMessage function to send repository notifications with images ([06176dc](https://github.com/think-root/telegram-connector/commit/06176dc10247134d440bbf0d30b3d25add5fc2b7))
+* **telegram:** add StartHandler to respond with GitHub Ukraine channel link ([3dbcfdf](https://github.com/think-root/telegram-connector/commit/3dbcfdf6015fd7ac5879826004957d2bb0df0d66))
+
 ## [1.6.1](https://github.com/think-root/telegram-connector/compare/v1.6.0...v1.6.1) (2025-03-02)
 
 
