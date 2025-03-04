@@ -11,8 +11,7 @@ FROM alpine:3.16
 WORKDIR /app
 ARG APP_VERSION
 ENV APP_VERSION=${APP_VERSION}
-ENV PORT=9111
 COPY --from=builder /app/telegram-connector .
 COPY .env /app/.env
-EXPOSE ${PORT}
+EXPOSE ${SERVER_PORT}
 CMD ["./telegram-connector"]
