@@ -77,20 +77,22 @@ jobs:
             echo "Setting up .env file..."
             echo "${{ secrets.ENV_PROD }}" > .env
 
-            echo "Determining version from Git tags..."
-            APP_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "dev")
-            echo "APP_VERSION: $APP_VERSION"
+            # Get latest tag from GitHub API
+            LATEST_TAG=$(curl -s https://api.github.com/repos/${{ github.repository }}/tags | grep -o '"name": "[^"]*' | head -1 | cut -d'"' -f4)
+            APP_VERSION=${LATEST_TAG:-dev}
+            echo "Latest tag: $APP_VERSION"
 
-            echo "Building Docker image with build arg..."
+            echo "Building Docker image with version $APP_VERSION"
+            export APP_VERSION
             docker compose build --build-arg APP_VERSION=$APP_VERSION
 
-            # Зупинка та видалення існуючого контейнера
+            # Stop and remove existing container
             if docker inspect telegram-connector >/dev/null 2>&1; then
               echo "Stopping and removing existing container..."
               docker compose down -v --rmi all
             fi
 
-            # Збірка та запуск
+            # Build and run with version
             docker compose up -d
 
             echo "Deployment complete!"
