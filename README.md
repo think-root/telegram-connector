@@ -12,18 +12,21 @@ This app is part of [content-alchemist](https://github.com/think-root/content-al
 ## Quick Start
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/think-root/telegram-connector.git
 cd telegram-connector
 ```
 
 2. Configure environment variables:
+
 ```bash
 cp .env.example .env
 # Edit .env with your configuration
 ```
 
 3. Deploy with Docker:
+
 ```bash
 docker compose up -d
 ```
@@ -32,35 +35,47 @@ docker compose up -d
 
 ### Required Environment Variables
 
-| Variable | Description |
-|----------|-------------|
-| BOT_TOKEN | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
-| ADMIN_ID | Your Telegram user ID |
-| CHANNEL_ID | Target Telegram channel ID |
-| CONTENT_ALCHEMIST_URL | URL of your content-alchemist instance |
-| CONTENT_ALCHEMIST_BEARER | Authentication token for content-alchemist |
-| X_API_KEY | API key for X (Twitter) integration |
-| X_URL | URL for self-hosted X API server |
-
-### Optional Environment Variables
-
-⚠️ **Warning**: WhatsApp integration is unofficial and may risk account suspension
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| ENABLE_CRON | Enable post collection cron job | false |
-| WAPP_ENABLE | Enable WhatsApp integration | false |
-| WAPP_JID | WhatsApp chat JID | - |
-| WAPP_TOKEN | WhatsApp authentication token | - |
-| WAPP_SERVER_URL | WhatsApp server URL | - |
+| Variable    | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| BOT_TOKEN   | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
+| CHANNEL_ID  | Target Telegram channel ID                                           |
+| X_API_KEY   | Your key for API protection                                          |
+| SERVER_PORT | Port for the HTTP server                                             |
 
 ## Dependencies
 
-- [Docker](https://docs.docker.com/engine/install/)
 - [content-alchemist](https://github.com/think-root/content-alchemist)
+- [content-maestro](https://github.com/think-root/content-maestro)
+- [Docker](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/) (optional)
-- [X API Server](https://github.com/think-root/x) (optional, for Twitter integration)
-- [WhatsApp Server](https://github.com/think-root/wapp) (optional, unofficial and may risk account suspension)
+
+## API Endpoints
+
+### Send Message to Telegram Channel
+
+```
+POST /telegram/send-message
+```
+
+Headers:
+
+- `X-API-Key`: Your API key (from X_API_KEY env var)
+- `Content-Type`: multipart/form-data
+
+Form Data:
+
+- `url`: URL to be included in the message
+- `text`: Text message to send to the channel
+- `image`: Image file to attach to the message
+
+Example Response:
+
+```json
+{
+  "status": "OK",
+  "message": "Message sent successfully"
+}
+```
 
 ## Contributing
 
@@ -77,12 +92,8 @@ docker compose up -d
 go mod download
 
 # Run locally
-go run ./cmd/bot/main.go
+go run ./cmd/main.go
 
 # Build binary
-go build -o telegram-connector ./cmd/bot/main.go
+go build -o telegram-connector ./cmd/main.go
 ```
-
-## License
-
-This project is licensed under the BSD 2-Clause License - see the [LICENSE](LICENSE) file for details.
