@@ -4,6 +4,7 @@ import (
 	"github.com/go-telegram/bot"
 )
 
+// RegisterCommands registers all available bot commands with their respective handlers
 func RegisterCommands(b *bot.Bot) {
 	b.RegisterHandler(
 		bot.HandlerTypeMessageText,
@@ -16,47 +17,5 @@ func RegisterCommands(b *bot.Bot) {
 		"/ping",
 		bot.MatchTypePrefix,
 		PingHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/gen",
-		bot.MatchTypePrefix,
-		GeneratePostsHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/info",
-		bot.MatchTypePrefix,
-		DBStatisticHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/help",
-		bot.MatchTypePrefix,
-		HelpHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/add",
-		bot.MatchTypePrefix,
-		ManualAddPostHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/next",
-		bot.MatchTypePrefix,
-		NextPostHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/send",
-		bot.MatchTypePrefix,
-		SendPostHandler,
-	)
-	b.RegisterHandler(
-		bot.HandlerTypeMessageText,
-		"/xsend",
-		bot.MatchTypePrefix,
-		SendPostToXHandler,
 	)
 }
