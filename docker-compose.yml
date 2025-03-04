@@ -3,7 +3,9 @@ version: '3'
 services:
   telegram-connector:
     container_name: telegram-connector
-    restart: unless-stopped
+    restart: always
+    ports:
+      - "127.0.0.1:${PORT:-8080}:${PORT:-8080}"
     image: telegram-connector:latest
     build:
       context: .
@@ -15,6 +17,7 @@ services:
     environment:
       - TZ=Europe/Kiev
       - APP_VERSION=${APP_VERSION:-dev}
+      - PORT=${PORT:-8080}
     networks:
       - think-root-network
 
