@@ -77,8 +77,8 @@ jobs:
             echo "Setting up .env file..."
             echo "${{ secrets.ENV_PROD }}" > .env
 
-            echo "Determining version from Git tags..."
-            export APP_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "dev")
+            echo "Determining version from environment variable..."
+            export APP_VERSION=${APP_VERSION:-dev}
             echo "APP_VERSION: $APP_VERSION"
 
             echo "Building Docker image with build arg..."
