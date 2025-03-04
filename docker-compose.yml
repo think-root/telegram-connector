@@ -1,17 +1,20 @@
+version: '3'
+
 services:
   telegram-connector:
     container_name: telegram-connector
-    restart: always
+    restart: unless-stopped
     image: telegram-connector:latest
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        APP_VERSION: ${APP_VERSION}
+        APP_VERSION: ${APP_VERSION:-dev}
     env_file:
       - .env
     environment:
-      TZ: Europe/Kiev
+      - TZ=Europe/Kiev
+      - APP_VERSION=${APP_VERSION:-dev}
     networks:
       - think-root-network
 
