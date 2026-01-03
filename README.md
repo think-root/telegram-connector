@@ -1,74 +1,110 @@
 # telegram-connector
 
-[![Go Version](https://img.shields.io/github/go-mod/go-version/think-root/telegram-connector)](https://github.com/think-root/telegram-connector)
-[![License](https://img.shields.io/github/license/think-root/telegram-connector)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/think-root/telegram-connector)](https://github.com/think-root/telegram-connector/releases)
-[![Changelog](https://img.shields.io/badge/changelog-view-blue)](CHANGELOG.md)
-[![Deploy Status](https://github.com/think-root/telegram-connector/workflows/Deploy%20telegram-connector/badge.svg)](https://github.com/think-root/telegram-connector/actions/workflows/deploy.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/think-root/telegram-connector)](https://goreportcard.com/report/github.com/think-root/telegram-connector)
+This project is part of the [content-maestro](https://github.com/think-root/content-maestro) repository. If you want Telegram integration and automatic publishing of posts there as well, you need to deploy this app.
 
-This app is part of [content-alchemist](https://github.com/think-root/content-alchemist). It is a Telegram integration that performs a simple function — publishing content to a Telegram [channel](https://t.me/github_ukraine).
+## Description
 
-## Quick Start
+A Go-based HTTP service that receives publishing requests and relays them to Telegram via the Bot API. It protects every request with API key middleware, accepts multipart payloads with optional media, and focuses on a lightweight local workflow.
 
-1. Clone the repository:
+## Prerequisites
+
+- Go 1.21+ (for local development)
+- A Telegram bot token from [@BotFather](https://core.telegram.org/bots)
+
+## Setup
+
+1. **Clone the repository:**
+
+2. **Create and configure the environment file:**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Fill in the required variables:
+
+   ```
+   BOT_TOKEN=your_telegram_bot_token
+   CHANNEL_ID=your_target_channel_id
+   X_API_KEY=your_private_api_key
+   SERVER_PORT=8080
+   ```
+
+3. **Install Go dependencies (optional for local runs):**
+
+   ```bash
+   go mod download
+   ```
+
+4. **Run the service:**
+
+   ```bash
+   go run ./cmd/main.go
+   ```
+
+   To build a binary for distribution:
+
+   ```bash
+   go build -o telegram-connector ./cmd/main.go
+   ```
+
+## API
+
+All endpoints require the `X-API-Key` header for authentication.
+
+### Authentication
+
+| Header      | Type   | Required | Description                          |
+|-------------|--------|----------|--------------------------------------|
+| `X-API-Key` | string | Yes      | API key defined in your `.env` file. |
+
+**Error Response (401 Unauthorized):**
+
+```json
+{
+  "detail": "Invalid or missing API key"
+}
+```
+
+---
+
+### POST `/telegram/send-message`
+
+Publishes a post to the configured Telegram channel. Supports text, optional image attachment, and optional URL.
+
+#### Request
+
+**Content-Type:** `multipart/form-data`
+
+| Parameter | Type   | Required | Description                                                        |
+|-----------|--------|----------|--------------------------------------------------------------------|
+| `text`    | string | Yes      | Message body delivered to the channel.                             |
+| `url`     | string | No       | URL appended to the post.                                          |
+| `image`   | file   | No       | Image file uploaded and attached to the Telegram message.          |
+
+#### Examples
+
+**Simple post:**
 
 ```bash
-git clone https://github.com/think-root/telegram-connector.git
-cd telegram-connector
+curl -X POST "http://localhost:8080/telegram/send-message" \
+  -H "X-API-Key: your_api_key" \
+  -F "text=Hello, Telegram!"
 ```
 
-2. Configure environment variables:
+**Post with image and URL:**
 
 ```bash
-cp .env.example .env
-# Edit .env with your configuration
+curl -X POST "http://localhost:8080/telegram/send-message" \
+  -H "X-API-Key: your_api_key" \
+  -F "text=Fresh article drop" \
+  -F "url=https://example.com/post" \
+  -F "image=@/path/to/image.jpg"
 ```
 
-3. Deploy with Docker:
+#### Response
 
-```bash
-docker compose up -d
-```
-
-## Detailed Configuration
-
-### Required Environment Variables
-
-| Variable    | Description                                                          |
-| ----------- | -------------------------------------------------------------------- |
-| BOT_TOKEN   | Telegram bot token from [@BotFather](https://core.telegram.org/bots) |
-| CHANNEL_ID  | Target Telegram channel ID                                           |
-| X_API_KEY   | Your key for API protection                                          |
-| SERVER_PORT | Port for the HTTP server                                             |
-
-## Dependencies
-
-- [content-alchemist](https://github.com/think-root/content-alchemist)
-- [content-maestro](https://github.com/think-root/content-maestro)
-- [Docker](https://docs.docker.com/engine/install/)
-- [Docker Compose](https://docs.docker.com/compose/install/) (optional)
-
-## API Endpoints
-
-### Send Message to Telegram Channel
-
-```
-POST /telegram/send-message
-```
-
-Headers:
-
-- `X-API-Key`: Your API key (from X_API_KEY env var)
-- `Content-Type`: multipart/form-data
-
-Form Data:
-
-- `url`: URL to be included in the message
-- `text`: Text message to send to the channel
-- `image`: Image file to attach to the message
-
-Example Response:
+**Success (200 OK):**
 
 ```json
 {
@@ -77,23 +113,16 @@ Example Response:
 }
 ```
 
-## Contributing
+**Error:**
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Setup
-
-```bash
-# Install Go
-go mod download
-
-# Run locally
-go run ./cmd/main.go
-
-# Build binary
-go build -o telegram-connector ./cmd/main.go
+```json
+{
+  "error": "Error message describing what went wrong"
+}
 ```
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
